@@ -46,7 +46,7 @@ export default function ProfileCompletionModal({
 
   // عند نجاح الحفظ، يُغلق المودال تلقائياً
   useEffect(() => {
-    if (state?.success) {
+    if (!state?.error) {
       setTimeout(() => setOpen(false), 800);
     }
   }, [state]);
@@ -88,7 +88,7 @@ export default function ProfileCompletionModal({
               {state.error}
             </div>
           )}
-          {state?.success && (
+          {!state?.error && (
             <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 dark:bg-emerald-950/20 dark:text-emerald-400 text-sm p-3 rounded-lg font-medium flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4" />
               <span>تم حفظ البيانات بنجاح!</span>
